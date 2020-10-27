@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Use JavaScript to Change Text</h2>
+<button onclick="postMessage()">Click me</button>
+
+<p id="demo"></p>
+
+<script>
+
+    function postMessage() {
+        let json = {
+          "request_id":"1235",
+          "request_body":{
+             "request_code" : "lifecycle.finish",
+             "data": {
+             }
+          },
+          "callback":"JSMethodToSendResponse"
+       }
+        window.webkit.messageHandlers.JSToNativeBridge.postMessage(JSON.stringfy(json));
+    }
+
+    function callJS(string) {
+      var x = document.getElementsByTagName("h2")[0];
+      x.innerHTML = string;
+    }
+
+</script>
+
+</body>
+</html>
